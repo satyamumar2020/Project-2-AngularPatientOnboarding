@@ -1,0 +1,102 @@
+@charset "ISO-8859-1";
+
+
+
+body {
+	background-color: white;
+	text-align: center;
+	color: black;
+}
+
+.blackheading {
+	background-color: skyblue;
+	color: black;
+}
+
+
+form {
+	padding: 4px 4px;
+	background-color: black;
+	color: white;
+	margin-right: 0px;
+}
+
+body {
+	background-color: white;
+	text-align: center;
+	color: black;
+}
+
+header{
+    font-size: small;
+    padding: 5px;
+    text-align: right;
+    color: black;
+    background-color:skyblue;
+}
+
+.nav{
+    background-color: white;
+}
+.nav a{
+    font-weight: 400;
+    color: black;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.nav a:hover{
+    color:skyblue;
+}
+
+.nav a:active{
+    color: skyblue
+}
+
+.headerRight{
+    font-weight: 400;
+    color: black;
+    padding: 20px;
+    text-decoration: none;
+    
+}
+
+.col-sm-4 a:hover{
+	color:#a6a6a6;
+	background-color: #CCEEFF;
+	border: 2px solid black;
+}
+
+.col-sm-6 a:hover{
+	color:black;
+	background-color: whitesmoke ;
+	border: 2px solid black;
+}
+
+
+.buttons{
+		color: white;
+	text-decoration: none;
+	background-color: black;
+	border: none;
+	padding: 10px 14px;
+	font-size: 15px;
+}
+
+img{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.buttons:hover{
+	color:black;
+	background-color: #CCEEFF;
+	border: 2px solid black;
+}
+
+footer {
+	background-color: black;
+	text-align: center;
+	color: #ffffff;
+	font-size: 10px;
+}

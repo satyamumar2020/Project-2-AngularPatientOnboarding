@@ -1,0 +1,125 @@
+<header>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone">
+        <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+        </path>
+    </svg>
+    - 044-2388 0477
+</header>
+
+<body align="center">
+    <div class="container">
+        <span class="nav">
+            <a href="">HOME</a>
+            <a href="adminDashboard">DASHBOARD</a>
+            <a href="contactUsPage">CONTACT US</a>
+            <a href="aboutUsPage">ABOUT US</a>
+        </span>
+        <br>
+        <br>
+ 
+        <div *ngIf="diff=='allAppointments'">
+            <form novalidate [formGroup]="searchFormSpecializationId">
+                      
+                        <input type="number" placeholder="Enter Specialization Id"
+                            formControlName="specializationidForSearch"><button class="searchButtons"
+                            (click)="getAppointmentBySpecializationId()"
+                            [disabled]="this.searchFormSpecializationId.invalid"> FILTER  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                                <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                              </svg></button>
+            </form>
+        </div><br>
+        <form novalidate [formGroup]="searchFormConsultationType">
+            <input type="text" placeholder="Enter Consultation Type" formControlName="consultationTypeForSearch"><button
+                class="searchButtons" (click)="getAppointmentByConsultationType()"
+                [disabled]="this.searchFormConsultationType.invalid"> FILTER  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                    <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                  </svg></button>
+        </form><br>
+        <div *ngIf="diff=='allAppointments'">
+            <form novalidate [formGroup]="searchFormDoctorId">
+                <input type="text" placeholder="Enter Doctor Id" formControlName="doctorIdForSearch"><button
+                    class="searchButtons" (click)="getAppointmentByDoctorId()"
+                    [disabled]="this.searchFormDoctorId.invalid"> FILTER <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                        <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                      </svg></button>
+            </form>
+        </div><br>
+        <form novalidate [formGroup]="searchFormStatus">
+            <input type="text" placeholder="Enter Status" formControlName="statusForSearch"><button
+                class="searchButtons" (click)="getAppointmentByStatus()" [disabled]="this.searchFormStatus.invalid">
+                FILTER  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                    <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                  </svg></button>
+           
+                
+        </form>
+     
+        <br>
+        <br>
+        <p style="color:red">{{errorMessage}}</p>
+        <h4 style = "background-color: skyblue;">APPOINTMENTS LIST</h4>
+        <br>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        EMAIL
+                    </th>
+                    <th>
+                        SPECIALIZATION ID
+                    </th>
+                    <th>
+                        SYMPTOMS
+                    </th>
+                    <th>
+                        CONSULTATION TYPE
+                    </th>
+                    <th>
+                        DOCTOR ID
+                    </th>
+                    <th>
+                        APPOINTMENT STATUS
+                    </th>
+                </tr>
+            </thead>
+            <tr *ngFor="let appointment of appointmentList">
+
+                <td>{{appointment.patientEmail}}</td>
+
+                <td>{{appointment.specializationId}}</td>
+
+                <td>{{appointment.symptoms}}</td>
+
+                <td>{{appointment.consultingType}}</td>
+
+                <td>{{appointment.doctorId}}</td>
+
+                <td>{{appointment.appointmentStatus}}</td>
+
+
+            </tr>
+
+        </table>
+        <br>
+        <a class="buttons" href="adminDashboard">GO TO DASHBOARD</a>
+        <a class="buttons" href="">HOME</a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <br>
